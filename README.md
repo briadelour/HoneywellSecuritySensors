@@ -19,8 +19,8 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
   - Honeywell/2Gig door/window contacts (DW10/DW11) - uses 345Mhz
   - Honeywell motion sensors (5800PIR) - uses 345Mhz
 - **Optional Thermo-Hygrometers for Weather** Any other 433.92MHz compatible sensors, if you choose to frequency hop between 433 & 345
-  - Example: LaCrosse TX141TH-BV2
-  - Example: Ambient Weather F007TH
+  - Example: LaCrosse TX141TH-BV2 (I had an older LaCrosse C85845 and once I started listening from Home Assistant I was able to pick up the sensor, along with some of my neighbor's weather stations within range.)
+  - Example: Ambient Weather F007TH, basic and affordable wireless sensor with display.
 
 ## Software Requirements
 
