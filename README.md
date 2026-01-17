@@ -18,7 +18,7 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
 - **Existing Sensors**:
   - Honeywell/2Gig door/window contacts (DW10/DW11) - uses 345Mhz
   - Honeywell motion sensors (5800PIR) - uses 345Mhz
-- **Optional Thermo-Hygrometers for Weather** Any other 433.92MHz compatible sensors, if you choose to frequency hop between 433 & 345
+- **Optional Thermo-Hygrometers for Weather**: or any other 433.92MHz compatible sensors, if you choose to frequency hop between 433 & 345
   - Example: LaCrosse TX141TH-BV2 (I had an older LaCrosse C85845 and once I started listening from Home Assistant I was able to pick up the sensor, along with some of my neighbor's weather stations within range.)
   - Example: Ambient Weather F007TH, basic and affordable wireless sensor with display.
 
@@ -27,7 +27,7 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
 ### Home Assistant Add-ons
 
 1. **Mosquitto broker** - MQTT broker for message handling
-2. **rtl_433** - Software to decode radio signals, full documentation: https://triq.org/rtl_433/ (not all are available in the HA Add On yet)
+2. **rtl_433** - Software to decode radio signals, full documentation: https://triq.org/rtl_433/ (not all protocols are available in the HA Add On yet)
 3. **rtl_433 MQTT Auto Discovery** - Automatic sensor discovery that even creates the template entities for you
 
 ### Home Assistant Integrations
