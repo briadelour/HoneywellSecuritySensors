@@ -333,7 +333,7 @@ Setup inspiration from [@EverythingSmartHome](https://www.youtube.com/@Everythin
 
 1. **Check rtl_433 logs** - Ensure the add-on is receiving signals
 2. **Verify antenna connection** - Make sure the SDR dongle antenna is properly connected
-3. **Check frequency** - Confirm your sensors operate on 433.92MHz
+3. **Check frequency** - Confirm your sensors operate on 433.92MHz or applicanbke frequencies. By inspecting the device you may be able to look up FCC data to determine what frequency to use.
 4. **Test sensor battery** - Low battery can cause weak signals
 
 ### Intermittent Updates
