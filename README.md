@@ -9,7 +9,7 @@ This guide documents how to repurpose old Honeywell security sensors (433.92MHz)
 After my Honeywell Lynx 5200 control panel died following a storm and power surge, I discovered I could continue using my existing wireless sensors without replacing them. By using an RTL-SDR USB dongle and the rtl_433 add-on, I'm able to receive status updates from all my door/window contacts and motion sensors directly in Home Assistant. As a bonus, I can also monitor temperature and weather data from other frequencies by having rtl_433 hop between frequencies.
 
 <div align=center>
-<img width="341" height="418" alt="image" src="https://github.com/user-attachments/assets/99c165f8-9121-4017-9f3e-5a70e3fe71a4" />
+<img width="335" height="419" alt="image" src="https://github.com/user-attachments/assets/0fd82527-8228-4dd0-8e86-af5ec7271d1e" />
 </div>
 
 ## Hardware Requirements
