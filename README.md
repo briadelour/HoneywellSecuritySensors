@@ -27,7 +27,7 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
 ### Home Assistant Add-ons
 
 1. **Mosquitto broker** - MQTT broker for message handling
-2. **rtl_433** - Software to decode radio signals
+2. **rtl_433** - Software to decode radio signals, full documentation: https://triq.org/rtl_433/ (not all are available in the HA Add On yet)
 3. **rtl_433 MQTT Auto Discovery** - Automatic sensor discovery that even creates the template entities for you
 
 ### Home Assistant Integrations
