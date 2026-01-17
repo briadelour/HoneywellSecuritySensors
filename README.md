@@ -1,8 +1,8 @@
-# Integrating Legacy 433.92MHz Honeywell Security Hardware with Home Assistant
+# Integrating Legacy 345MHz Honeywell Security Hardware with Home Assistant
 
 ## Overview
 
-This guide documents how to repurpose old Honeywell security sensors (433.92MHz) with Home Assistant after a control panel failure, using a software-defined radio (SDR) USB dongle to receive sensor signals directly.
+This guide documents how to repurpose old Honeywell security sensors (344.975MHz) with Home Assistant after a control panel failure, using a software-defined radio (SDR) USB dongle to receive sensor signals directly.  While the software and Software Defined Radio typically uses 433Mhz, you can set the radio to only listen on 345Mhz, or you can frequency hop for a defined number of seconds on different frequencies.
 
 ## Background
 
@@ -16,9 +16,11 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
 
 - **SDR Dongle**: [Nooelec RTL-SDR v5](https://www.amazon.com/dp/B01GDN1T4S) (or compatible RTL2832U-based dongle)
 - **Existing Sensors**:
-  - Honeywell/2Gig door/window contacts (DW10/DW11)
-  - Honeywell motion sensors (5800PIR)
-  - Any other 433.92MHz compatible sensors
+  - Honeywell/2Gig door/window contacts (DW10/DW11) - uses 345Mhz
+  - Honeywell motion sensors (5800PIR) - uses 345Mhz
+- **Optional Thermo-Hygrometers for Weather** Any other 433.92MHz compatible sensors, if you choose to frequency hop between 433 & 345
+  - Example: LaCrosse TX141TH-BV2
+  - Example: Ambient Weather F007TH
 
 ## Software Requirements
 
@@ -67,19 +69,21 @@ output mqtt://[IP_of_HAOS]:1883,user=mqtt,pass=mqtt,retain=true
 report_meta time:iso:usec:tz
 
 # Frequency hopping configuration
-frequency 433.92M   # For Honeywell security sensors
-frequency 344.975M  # For temperature and weather sensors
+frequency 433.92M   # For temperature and weather sensors
+frequency 344.975M  # For Honeywell security sensors
 hop_interval 120    # Switch frequencies every 120 seconds
 
 # Output preferences
 convert si
 
 # Protocol filters (optional - speeds up processing)
-protocol 8   # LaCrosse TX Temperature/Humidity Sensor
+# protocol 8   # LaCrosse TX Temperature/Humidity Sensor
+# protocol 20  # Ambient Weather F007TH, TFA 30.3208.02, SwitchDocLabs F016TH temperature sensor
 protocol 70  # Honeywell Door/Window Sensor, 2Gig DW10/DW11, RE208 repeater
+# protocol 73  # LaCrosse TX141-Bv2, TX141TH-Bv2, TX141-Bv3, TX141W, TX145wsdth, (TFA, ORIA) sensor
 ```
 
-**Note**: Replace `[IP_of_HAOS]` with your Home Assistant IP address, or use `localhost` if running on the same machine.
+**Note**: Replace `[IP_of_HAOS]` with your Home Assistant IP address, or use `localhost` if running on the same machine.  Uncomment whatever protocol you what to try to listen for.  The full list of 200+ is on the documentation for rtl_433.  For example I had some weather sensors that report back.  Be careful not to turn on too many protocols as the data collection may not cycle through all the devices before it hops to the next frequency.  You can also get too much data if you enable some of the TPMS protocols, for example.  While in concept it might be nice to find and narrow down TPMS sensors reporting tire pressure on your car, it will also collect data on every car that pulls into your driveway with the same brand TPMS which creates a lot noise in your logs.
 
 ### 5. Start rtl_433 Add-on
 
