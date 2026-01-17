@@ -28,7 +28,7 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
 
 1. **Mosquitto broker** - MQTT broker for message handling
 2. **rtl_433** - Software to decode radio signals
-3. **rtl_433 MQTT Auto Discovery** - Automatic sensor discovery
+3. **rtl_433 MQTT Auto Discovery** - Automatic sensor discovery that even creates the template entities for you
 
 ### Home Assistant Integrations
 
