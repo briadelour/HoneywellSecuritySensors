@@ -19,7 +19,6 @@ After my Honeywell Lynx 5200 control panel died following a storm and power surg
   - Honeywell/2Gig door/window contacts (DW10/DW11) - uses 345Mhz
   - Honeywell motion sensors (5800PIR) - uses 345Mhz
   - Honeywell Ademco 5804 Standard 4-button remote - unencrypted model, not 5804E, uses 345Mhz
-    - I haven't tried the remote yet, but in theory these signals can be used for any automation in Home Assistant
 - **Optional Thermo-Hygrometers for Weather**: or any other 433.92MHz compatible sensors, if you choose to frequency hop between 433 & 345
   - Example: LaCrosse TX141TH-BV2 (I had an older LaCrosse C85845 and once I started listening from Home Assistant I was able to pick up the sensor, along with some of my neighbor's weather stations within range.)
   - Example: Ambient Weather F007TH, basic and affordable wireless sensor with display.
@@ -198,6 +197,24 @@ sensor:
         No Motion
       {% endif %}
     qos: 1
+
+  # Remote Sensor with 4-buttons
+  - state_topic: "rtl_433/17069798-rtl433/devices/Honeywell-Security/8/98082/event"
+    name: sensor.honeywell_security_8_98082_remote
+    value_template: >
+      {% if value == '18' %}
+        AWAY
+      {% elif value == '66' %}
+        STAY
+      {% elif value == '34' %}
+        OFF
+      {% elif value == '130' %}
+        PANIC
+      {% else %}
+        unknown ({{ value }})
+      {% endif %}
+    qos: 1
+
 ```
 
 **Important**: 
